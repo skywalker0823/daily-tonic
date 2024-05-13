@@ -18,5 +18,5 @@ def start_daily(cloud_event):
     print(base64.b64decode(cloud_event.data["message"]["data"]))
 
 
-if __name__=="__main__":
-    tester()
+# if __name__=="__main__":
+#     tester()
