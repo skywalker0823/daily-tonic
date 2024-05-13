@@ -13,3 +13,5 @@ steps:
     - --memory=256Mi
     - --timeout=60s
     - --max-instances=1
+    - --trigger-event=google.pubsub.topic.publish
+    - --trigger-resource=daily-tonic-topic
