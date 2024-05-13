@@ -1,6 +1,6 @@
 import base64
 import functions_framework
-import os, dotenv
+import os, dotenv, datetime
 from fastapi import FastAPI
 
 dotenv.load_dotenv()
@@ -14,7 +14,7 @@ def tester():
 @functions_framework.cloud_event
 def start_daily(cloud_event):
     # Print out the data from Pub/Sub, to prove that it worked
-    print("OK")
+    print("OK at " + datetime.datetime.now())
     print(base64.b64decode(cloud_event.data["message"]["data"]))
 
 
