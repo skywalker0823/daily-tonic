@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  # Deploy to cloud function
+  args:
+    - functions
+    - deploy
+    - function-daily-tonic
+    - --gen2
+    - --runtime=python310
+    - --region=asia-east1
+    - --entry-point=start_daily
+    - --source=.
+    - --memory=256Mi
+    - --timeout=60s
+    - --max-instances=1
