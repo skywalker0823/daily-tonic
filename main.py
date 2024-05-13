@@ -8,7 +8,7 @@ dotenv.load_dotenv()
 TEST = os.getenv("TEST")
 
 def tester():
-    print(TEST)
+    print(TEST+"2")
 
 # Triggered from a message on a Cloud Pub/Sub topic.
 @functions_framework.cloud_event
