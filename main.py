@@ -1,14 +1,20 @@
 import base64
+import datetime
+import dotenv
+import os
+import requests
+
 import functions_framework
-import os, dotenv, datetime, requests
-from fastapi import FastAPI
+
+
+# from fastapi import FastAPI
 
 
 def get_telegram_config():
     dotenv.load_dotenv()
     return {
-        "TELEGRAM_TOKEN": os.getenv("TELEGRAM_TOKEN_V1"),
-        "TELEGRAM_CHAT_ID": os.getenv("TELEGRAM_CHAT_ID_V1")
+        "TELEGRAM_TOKEN": os.getenv("TELEGRAM_TOKEN_V1", os.getenv("TELEGRAM_TOKEN")),
+        "TELEGRAM_CHAT_ID": os.getenv("TELEGRAM_CHAT_ID_V1", os.getenv("TELEGRAM_CHAT_ID"))
     }
 
 
@@ -19,13 +25,20 @@ def send_telegram_message(text, token, chat_id):
     return response.json()
 
 
-# Triggered from a message on a Cloud Pub/Sub topic.
+def get_nasa():
+    print("fetching nasa APOD...")
+
+
 @functions_framework.cloud_event
 def start_daily(cloud_event):
-    # Print out the data from Pub/Sub, to prove that it worked
     print("---" + str(datetime.datetime.now()) + "---")
     print(base64.b64decode(cloud_event.data["message"]["data"]))
     config = get_telegram_config()
-    response = send_telegram_message("Test message from function-daily-tonic at" + str(datetime.datetime.now()),
-                                     config["TELEGRAM_TOKEN"], config["TELEGRAM_CHAT_ID"])
-    print(response)
+    messages = [
+        {"text": "Message from function-daily-tonic at" + str(datetime.datetime.now())},
+        {"text": "https://digital-transformation.media/wp-content/uploads/2018/09/logo_gcp_vertical_rgb.png" + str(
+            datetime.datetime.now())},
+    ]
+    for message in messages:
+        response = send_telegram_message(message["text"], config["TELEGRAM_TOKEN"], config["TELEGRAM_CHAT_ID"])
+        print(response)
