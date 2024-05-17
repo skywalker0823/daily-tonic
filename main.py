@@ -29,14 +29,15 @@ def send_telegram_message(text, token, chat_id):
 def get_nasa(config):
     print("fetching nasa APOD...")
     nasa_url = f'https://api.nasa.gov/planetary/apod?api_key={config["NASA_KEY"]}'
-    nasa_response = requests.get(nasa_url)
     try:
+        nasa_response = requests.get(nasa_url)
         if nasa_response.status_code == 200:
             nasa_data = nasa_response.json()
             nasa_image = nasa_data["url"]
             nasa_explanation = nasa_data["explanation"]
             return {"nasa_image": nasa_image, "nasa_explanation": nasa_explanation}
     except:
+        print("Fetching failed! There is something wrong with request to the NASA API.")
         return {"nasa_image": "image fetching failed", "nasa_explanation": "explanation fetching failed"}
     
 
