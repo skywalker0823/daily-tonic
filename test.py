@@ -8,7 +8,6 @@ import requests
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
 # Get Telegram 配置
 def get_configs():
     dotenv.load_dotenv()
@@ -20,11 +19,11 @@ def get_configs():
 
 
 # Send to Telegram
-# def send_telegram_message(text, token, chat_id):
-#     url = f"https://api.telegram.org/bot{token}/sendMessage"
-#     params = {"chat_id": chat_id, "text": text}
-#     response = requests.get(url, params=params)
-#     return response.json()
+def send_telegram_message(text, token, chat_id):
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    params = {"chat_id": chat_id, "text": text}
+    response = requests.get(url, params=params)
+    return response.json()
 
 # # 測試 def tester(): logger.info("---{}---".format(datetime.datetime.now())) config = get_configs() logger.info(
 # "Telegram Config: {}".format(config)) response = send_telegram_message("Test message from function-daily-tonic",
@@ -42,5 +41,6 @@ def get_nasa():
 
 
 if __name__ == "__main__":
+    configs = get_configs()
     # tester()
-    get_nasa()
+    send_telegram_message(text = "test message", token = configs["TELEGRAM_TOKEN"], chat_id = configs["TELEGRAM_CHAT_ID"])

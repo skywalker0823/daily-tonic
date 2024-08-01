@@ -49,7 +49,7 @@ def start_daily(cloud_event):
     config = get_configs()
     nasa_apod = get_nasa(config)
     messages = [
-        {"text": "Message from function-daily-tonic at" + str(datetime.datetime.now())},
+        {"text": "Message from function-daily-tonic at " + str(datetime.datetime.now())},
         {"text": nasa_apod["nasa_image"]},
         {"text": nasa_apod["nasa_explanation"]}
     ]
