@@ -4,7 +4,8 @@ from . import package_configs
 def get_nasa():
     print("fetching nasa APOD...")
     config_nasa = package_configs()
-    nasa_url = f'https://api.nasa.gov/planetary/apod?api_key={config_nasa["NASA_KEY"]}'
+    key = config_nasa["NASA_KEY"]
+    nasa_url = f'https://api.nasa.gov/planetary/apod?api_key={key}'
     try:
         nasa_response = requests.get(nasa_url)
         if nasa_response.status_code == 200:
