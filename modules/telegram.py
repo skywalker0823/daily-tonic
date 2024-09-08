@@ -10,7 +10,7 @@ def send_telegram_message(text,image_sets):
     url_msg = f"https://api.telegram.org/bot{token}/sendMessage"
     url_image_set = f"https://api.telegram.org/bot{token}/sendMediaGroup"
     if image_sets == False or image_sets == None:
-        print("no images")
+        print("no images, might be nasa messages dict")
         params = {"chat_id": module_config["TELEGRAM_CHAT_ID"], "text": text}
         response = requests.get(url_msg, params=params)
         return response.json()

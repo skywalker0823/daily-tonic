@@ -11,7 +11,7 @@ steps:
     - --entry-point=start_daily
     - --source=.
     - --memory=256Mi
-    - --timeout=60s
+    - --timeout=600s
     - --max-instances=1
     - --trigger-event=google.pubsub.topic.publish
     - --trigger-resource=daily-tonic-topic
