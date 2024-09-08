@@ -8,6 +8,7 @@ from fetch_list.nasa import get_nasa
 
 # 模組列
 from modules.telegram import send_telegram_message
+from modules.ptt_beauty import get_ptt_beauty
 
 
 @functions_framework.cloud_event
@@ -21,5 +22,11 @@ def start_daily(cloud_event):
         {"text": nasa_apod["nasa_explanation"]}
     ]
     for message in messages:
-        response = send_telegram_message(text = message["text"])
+        response = send_telegram_message(text = message["text"], image_sets=None)
         print(response)
+
+    result = send_telegram_message(None, get_ptt_beauty())
+    print(result)
+
+# if __name__ == "__main__":
+#     start_daily()
