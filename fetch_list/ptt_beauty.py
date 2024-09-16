@@ -62,8 +62,6 @@ def get_ptt_beauty():
             article_response = session.get(link, headers=headers)
             article_soup = BeautifulSoup(article_response.text, 'html.parser')
 
-
-
             # 提取所有圖片連結
             img_urls = article_soup.find_all('a', href=re.compile(r'(https?://.*\.(jpg|jpeg|png|gif))'))
             for img_url in img_urls:

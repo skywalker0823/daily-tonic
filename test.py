@@ -6,10 +6,11 @@ from modules.telegram import send_telegram_message
 
 
 def tester():
-    nasa_result = get_nasa()
-    tg_result = send_telegram_message("hi hi world!")
-    print(nasa_result)
-    print(tg_result)
+    # nasa_result = get_nasa()
+    # tg_result = send_telegram_message("hi hi world!")
+    # print(nasa_result)
+    # print(tg_result)
+    print("test")
 
 if __name__ == "__main__":
 #    configs = get_configs()

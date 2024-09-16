@@ -5,10 +5,10 @@ import functions_framework
 # 擷取列
 from fetch_list.bt import get_bt
 from fetch_list.nasa import get_nasa
+from fetch_list.ptt_beauty import get_ptt_beauty
 
 # 模組列
 from modules.telegram import send_telegram_message
-from modules.ptt_beauty import get_ptt_beauty
 
 
 @functions_framework.cloud_event
@@ -29,6 +29,7 @@ def start_daily(cloud_event):
     # 如要關閉 beauty fetch 功能 註解以下即可
     result = send_telegram_message(None, get_ptt_beauty())
     print(result)
+    print("---ALL REQUESTS FINISHED---")
 
 # if __name__ == "__main__":
 #     start_daily()
