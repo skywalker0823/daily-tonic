@@ -27,11 +27,15 @@ def start_daily(cloud_event):
 
     print("Nasa 部分完成 開始第二階段")
 
+    try:
     # 如要關閉 beauty fetch 功能 註解以下即可
-    result = send_telegram_message(None, get_ptt_beauty())
-    print("第二階段完成")
-    print(result)
-    print("---ALL REQUESTS FINISHED---")
+        result = send_telegram_message(None, get_ptt_beauty())
+        print("第二階段完成")
+        print(result)
+        print("---ALL REQUESTS FINISHED---")
+    except Exception as e:
+        print("Error occurred in second stage: ", e)
+        print("---ALL REQUESTS FINISHED with exception---")
 
 # if __name__ == "__main__":
 #     start_daily()
