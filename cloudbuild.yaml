@@ -10,7 +10,7 @@ steps:
     - --region=asia-east1
     - --entry-point=start_daily
     - --source=.
-    - --memory=512Mi
+    - --memory=256Mi
     - --timeout=600s
     - --max-instances=1
     - --trigger-event=google.pubsub.topic.publish
