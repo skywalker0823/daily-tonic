@@ -16,6 +16,7 @@ TEST_URL = "https://www.ptt.cc/bbs/Beauty/index3887.html"
 # 4. webhook功能
 
 def get_ptt_beauty():
+    print("---start get_ptt_beauty---")
 # 設置 session 並通過年齡驗證
     session = requests.Session()
     session.cookies.set('over18', '1')

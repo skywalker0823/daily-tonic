@@ -5,6 +5,7 @@ import time
 MAX_IMAGES_PER_BATCH = 10
 
 def send_telegram_message(text,image_sets):
+    print("開始發送 TG")
     module_config = module_configs()
     token = module_config["TELEGRAM_TOKEN"]
     url_msg = f"https://api.telegram.org/bot{token}/sendMessage"
