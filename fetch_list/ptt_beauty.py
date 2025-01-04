@@ -39,7 +39,7 @@ def get_ptt_beauty():
     # previous_page_link = pagination_bar.find('a', string='‹ 上頁')['href']
     # print(f"Processing page: {previous_page_link}")
 
-    number = random.randint(1800,4000)
+    number = random.randint(1800,4006)
     # 測試用(改這裡就好!)
     response = session.get(f"https://www.ptt.cc/bbs/Beauty/index{number}.html", headers=headers)
     # response = session.get(BASE_URL+previous_page_link, headers=headers)
@@ -70,6 +70,7 @@ def get_ptt_beauty():
                 print(f"Found image: {img_link}")
                 image_set.setdefault(title, []).append(img_link)
     print("All img fetch finished")
+    print(image_set)
     return image_set
 
                 # # 發送請求下載圖片
@@ -90,3 +91,6 @@ def get_ptt_beauty():
 
 # if __name__ == "__main__":
 #     send_telegram_message(None, get_ptt_beauty())
+
+# if __name__ == "__main__":
+#     get_ptt_beauty()

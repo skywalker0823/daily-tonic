@@ -25,9 +25,11 @@ def start_daily(cloud_event):
         response = send_telegram_message(text = message["text"], image_sets=None)
         print(response)
 
+    print("Nasa 部分完成 開始第二階段")
 
     # 如要關閉 beauty fetch 功能 註解以下即可
     result = send_telegram_message(None, get_ptt_beauty())
+    print("第二階段完成")
     print(result)
     print("---ALL REQUESTS FINISHED---")
 

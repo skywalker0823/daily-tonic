@@ -1,15 +1,15 @@
 from fetch_list.bt import get_bt
 from fetch_list.nasa import get_nasa
-
+from fetch_list.ptt_beauty import get_ptt_beauty
 from modules.telegram import send_telegram_message
 
 
 
 def tester():
-    # nasa_result = get_nasa()
-    # tg_result = send_telegram_message("hi hi world!")
-    # print(nasa_result)
-    # print(tg_result)
+    nasa_result = get_nasa()
+    tg_result = send_telegram_message(None,get_ptt_beauty())
+    print(nasa_result)
+    print(tg_result)
     print("test")
 
 if __name__ == "__main__":
